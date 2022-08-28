@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ArcProgressView">
+        <attr name="arcBgColor" format="color" />
+        <attr name="arcProgressColor" format="color" />
+        <attr name="arcSize" format="dimension" />
+    </declare-styleable>
+</resources>
