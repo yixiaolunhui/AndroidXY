@@ -107,8 +107,8 @@ class CodeEditText @JvmOverloads constructor(context: Context, var attrs: Attrib
     }
 
     init {
+        initSetting()
         initAttrs()
-        initCode()
     }
 
 
@@ -129,7 +129,7 @@ class CodeEditText @JvmOverloads constructor(context: Context, var attrs: Attrib
         obtainStyledAttributes.recycle()
     }
 
-    private fun initCode() {
+    private fun initSetting() {
         setTextColor(Color.TRANSPARENT)
         isFocusableInTouchMode = true
         isCursorVisible = false
