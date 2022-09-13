@@ -16,10 +16,9 @@
     <declare-styleable name="CodeEditText">
         <!--code模式-->
         <attr name="code_mode" format="enum">
-            <!--密码-->
-            <enum name="password" value="0" />
             <!--文字-->
-            <enum name="text" value="1" />
+            <enum name="text" value="0" />
+            <!--TODO 拓展-->
         </attr>
 
         <!--code样式-->
@@ -32,8 +31,8 @@
             <enum name="line" value="2" />
             <!--圆形-->
             <enum name="circle" value="3" />
+            <!--TODO 拓展-->
         </attr>
-
 
         <!--code背景色-->
         <attr name="code_bg_color" format="color" />

@@ -4,7 +4,6 @@ import android.content.Context
 import android.graphics.*
 import android.graphics.drawable.GradientDrawable
 import android.util.AttributeSet
-import android.util.Log
 import androidx.appcompat.widget.AppCompatEditText
 import com.yxlh.androidxy.R
 import com.yxlh.androidxy.utils.DensityUtil
@@ -77,6 +76,7 @@ class CodeEditText @JvmOverloads constructor(context: Context, var attrs: Attrib
     private val currentDrawable by lazy {
         GradientDrawable().also {
             it.setStroke(borderWidth.toInt(), borderSelectColor)
+            it.setColor(codeBgColor)
         }
     }
 
@@ -130,13 +130,9 @@ class CodeEditText @JvmOverloads constructor(context: Context, var attrs: Attrib
     }
 
     private fun initCode() {
-        //隐藏光标
-        isCursorVisible = false
-        //设置本来文字的颜色为透明
         setTextColor(Color.TRANSPARENT)
-        //触摸获取焦点
         isFocusableInTouchMode = true
-        //屏蔽长按
+        isCursorVisible = false
         setOnLongClickListener { true }
     }
 
@@ -150,8 +146,6 @@ class CodeEditText @JvmOverloads constructor(context: Context, var attrs: Attrib
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-        Log.e("11111111", "CodeEditText-------onDraw")
-
         //当前索引（待输入的光标位置）
         currentIndex = text?.length ?: 0
         //Item宽度（这里判断如果设置了宽度并且合理就使用当前设置的宽度，否则平均计算）
@@ -163,7 +157,6 @@ class CodeEditText @JvmOverloads constructor(context: Context, var attrs: Attrib
 
         //计算左右间距大小
         space = ((measuredWidth - codeItemWidth * maxLength - codeItemSpace * (maxLength - 1)) / 2).toInt()
-
 
         //绘制Code样式
         when (codeStyle) {
@@ -198,12 +191,8 @@ class CodeEditText @JvmOverloads constructor(context: Context, var attrs: Attrib
         for (i in 0 until maxLength) {
             if (textStr.isNotEmpty() && i < textStr.length) {
                 when (codeMode) {
-                    //密码
-                    0 -> {
-
-                    }
                     //文字
-                    1 -> {
+                    0 -> {
                         val code: String = textStr[i].toString()
                         val textWidth: Float = mTextPaint.measureText(code)
                         val textHeight: Float = CodeHelper.getTextHeight(code, mTextPaint)
