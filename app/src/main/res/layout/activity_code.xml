@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".demo.ui.codeet.CodeActivity">
+
+    <com.yxlh.androidxy.demo.ui.codeet.widget.CodeEditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="20dp"
+        android:inputType="number"
+        android:maxLength="4"
+        app:code_border_color="@android:color/darker_gray"
+        app:code_border_radius="5dp"
+        app:code_border_select_color="@color/design_default_color_primary"
+        app:code_border_width="2dp"
+        app:code_content_color="@color/purple_500"
+        app:code_content_size="35dp"
+        app:code_item_width="50dp"
+        app:code_mode="text"
+        app:code_style="form" />
+
+    <com.yxlh.androidxy.demo.ui.codeet.widget.CodeEditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="20dp"
+        android:inputType="number"
+        android:maxLength="4"
+        app:code_border_color="@android:color/darker_gray"
+        app:code_border_radius="5dp"
+        app:code_border_select_color="@color/design_default_color_primary"
+        app:code_border_width="2dp"
+        app:code_content_color="@color/purple_500"
+        app:code_content_size="35dp"
+        app:code_item_width="50dp"
+        app:code_mode="text"
+        app:code_style="rectangle" />
+
+    <com.yxlh.androidxy.demo.ui.codeet.widget.CodeEditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="20dp"
+        android:inputType="number"
+        android:maxLength="6"
+        app:code_border_color="@android:color/darker_gray"
+        app:code_border_radius="5dp"
+        app:code_border_select_color="@color/design_default_color_primary"
+        app:code_border_width="2dp"
+        app:code_content_color="@color/purple_500"
+        app:code_content_size="35dp"
+        app:code_item_width="20dp"
+        app:code_item_space="30dp"
+        app:code_mode="text"
+        app:code_style="line" />
+
+    <com.yxlh.androidxy.demo.ui.codeet.widget.CodeEditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="20dp"
+        android:inputType="number"
+        android:maxLength="6"
+        app:code_border_color="#E1E1E1"
+        app:code_border_radius="5dp"
+        app:code_border_select_color="@color/design_default_color_primary"
+        app:code_border_width="2dp"
+        app:code_content_color="@color/purple_500"
+        app:code_content_size="35dp"
+        app:code_item_width="30dp"
+        app:code_mode="text"
+        app:code_style="circle" />
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>

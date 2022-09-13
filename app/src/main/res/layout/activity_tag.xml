@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="15dp"
-    tools:context=".ui.tag.TagActivity">
+    tools:context=".demo.ui.tag.TagActivity">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tag_title"

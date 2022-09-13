@@ -4,12 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".demo.ui.tag.TagListActivity">
-
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/taglist"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+    tools:context=".demo.function.jump.DetailActivity">
 
 </androidx.constraintlayout.widget.ConstraintLayout>

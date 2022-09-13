@@ -5,4 +5,55 @@
         <attr name="arcProgressColor" format="color" />
         <attr name="arcSize" format="dimension" />
     </declare-styleable>
+
+
+    <style name="CircleStyle">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+
+    <declare-styleable name="CodeEditText">
+        <!--code模式-->
+        <attr name="code_mode" format="enum">
+            <!--密码-->
+            <enum name="password" value="0" />
+            <!--文字-->
+            <enum name="text" value="1" />
+        </attr>
+
+        <!--code样式-->
+        <attr name="code_style" format="enum">
+            <!--表格-->
+            <enum name="form" value="0" />
+            <!--方块-->
+            <enum name="rectangle" value="1" />
+            <!--横线-->
+            <enum name="line" value="2" />
+            <!--圆形-->
+            <enum name="circle" value="3" />
+        </attr>
+
+
+        <!--code背景色-->
+        <attr name="code_bg_color" format="color" />
+        <!--边框宽度-->
+        <attr name="code_border_width" format="dimension" />
+        <!--边框默认颜色-->
+        <attr name="code_border_color" format="color" />
+        <!--边框选中颜色-->
+        <attr name="code_border_select_color" format="color" />
+        <!--边框圆角-->
+        <attr name="code_border_radius" format="dimension" />
+        <!--code 内容颜色（密码或文字）-->
+        <attr name="code_content_color" format="color" />
+        <!--code 内容大小（密码或文字）-->
+        <attr name="code_content_size" format="dimension" />
+        <!--code 单个宽度-->
+        <attr name="code_item_width" format="dimension" />
+        <!--code Item之间的间隙-->
+        <attr name="code_item_space" format="dimension" />
+
+    </declare-styleable>
+
 </resources>

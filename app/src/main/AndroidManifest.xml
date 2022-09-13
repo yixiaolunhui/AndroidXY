@@ -3,6 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.yxlh.androidxy">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission
+        android:name="android.permission.WRITE_SECURE_SETTINGS"
+        tools:ignore="ProtectedPermissions" />
+
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -15,20 +20,43 @@
         android:theme="@style/Theme.AndroidXY"
         tools:targetApi="31">
         <activity
-            android:name=".ui.tag.TagListActivity"
+            android:name=".demo.ui.codeet.CodeActivity"
+            android:label="验证码"
             android:exported="false" />
         <activity
-            android:name=".ui.tag.TagActivity"
+            android:name="com.yxlh.androidxy.demo.function.jump.DetailActivity"
+            android:exported="false"
+            android:label="详情页面" />
+        <activity
+            android:name="com.yxlh.androidxy.demo.function.jump.AuthActivity"
+            android:exported="false"
+            android:label="认证页面" />
+        <activity
+            android:name="com.yxlh.androidxy.demo.function.jump.LoginActivity"
+            android:exported="false"
+            android:label="登录页面" />
+        <activity
+            android:name="com.yxlh.androidxy.demo.function.jump.ActivityStartActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.yxlh.androidxy.demo.ui.avatar.AvatarOverlayActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.yxlh.androidxy.demo.ui.tag.TagListActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.yxlh.androidxy.demo.ui.tag.TagActivity"
             android:exported="false"
             android:label="标签" />
         <activity
-            android:name=".ui.keyboard.KeyboardActivity"
+            android:name="com.yxlh.androidxy.demo.ui.keyboard.KeyboardActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.arc.ArcProgressActivity"
-            android:exported="false" />
+            android:name="com.yxlh.androidxy.demo.ui.arc.ArcProgressActivity"
+            android:exported="false"
+            android:process=":test" />
         <activity
-            android:name=".MainActivity"
+            android:name=".main.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
