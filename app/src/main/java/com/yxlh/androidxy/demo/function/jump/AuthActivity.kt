@@ -1,6 +1,7 @@
 package com.yxlh.androidxy.demo.function.jump
 
 import android.app.Activity
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -14,7 +15,9 @@ class AuthActivity : AppCompatActivity() {
 
     fun authSuccess(view: View) {
         UserDataHelper.isAuth=true
-        setResult(Activity.RESULT_OK)
+        var intent= Intent()
+        intent.putExtra("name","dalong")
+        setResult(Activity.RESULT_OK,intent)
         finish()
     }
 }

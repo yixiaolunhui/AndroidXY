@@ -1,30 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="20dp"
+    android:orientation="vertical"
     tools:context=".demo.function.jump.ActivityStartActivity">
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/clear"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="clear"
-        android:text="清空数据"
-        app:layout_constraintBottom_toTopOf="@+id/jump"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="清空数据" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/jump"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="jumpDetail"
-        android:text="跳转到详情"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/clear" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:text="跳转到详情" />
+
+
+    <fragment
+        android:id="@+id/jumpLoginFragment"
+        android:name="com.yxlh.androidxy.demo.function.jump.fragment.AppFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <fragment
+        android:id="@+id/jumpAuthFragment"
+        android:name="com.yxlh.androidxy.demo.function.jump.fragment.XFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</androidx.appcompat.widget.LinearLayoutCompat>
