@@ -8,18 +8,14 @@ package com.yxlh.permission.api
 interface IPermissionCallBack {
 
     /**
-     * 有权限被同意授予时回调
-     *
-     * @param permissions           请求成功的权限组
-     * @param all                   是否全部授予了
+     * 同意授予时回调
      */
-    fun onGranted(permissions: MutableList<String>?, all: Boolean)
+    fun onGranted()
 
     /**
-     * 有权限被拒绝授予时回调
+     * 权限被拒绝授予时回调
      *
-     * @param permissions            请求失败的权限组
-     * @param never                  是否有某个权限被永久拒绝了
+     * @param never        是否有永久拒绝
      */
-    fun onDenied(permissions: MutableList<String>?, never: Boolean)
+    fun onDenied(never: Boolean)
 }

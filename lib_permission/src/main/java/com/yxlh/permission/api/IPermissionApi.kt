@@ -17,12 +17,12 @@ interface IPermissionApi {
 
     fun requestPermission(
         context: Context, permission: Array<String>,
-        type: Int, enterSetting: Boolean, callback: IPermissionCallBack
+        enterSetting: Boolean, callback: IPermissionCallBack
     )
 
     fun requestPermission(
         context: Context, permission: List<String>,
-        type: Int, enterSetting: Boolean, callback: IPermissionCallBack
+        enterSetting: Boolean, callback: IPermissionCallBack
     )
 
 }

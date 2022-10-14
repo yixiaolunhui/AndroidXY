@@ -12,7 +12,7 @@ import com.yxlh.permission.intercept.Interceptor
 import com.yxlh.permission.intercept.InterceptorApi
 
 class MainActivity : AppCompatActivity() {
-    var binding: ActivityMainBinding? = null
+    private var binding: ActivityMainBinding? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,6 +27,7 @@ class MainActivity : AppCompatActivity() {
                     AlertDialog.Builder(this@MainActivity)
                         .setTitle("提示")
                         .setMessage("授权是为了让您更好的使用此APP")
+                        .setCancelable(false)
                         .setPositiveButton("确定") { dialog, which ->
                             dialog.dismiss()
                             chain.proceed()
@@ -39,12 +40,12 @@ class MainActivity : AppCompatActivity() {
                 }
             })
             .callBack(object : IPermissionCallBack {
-                override fun onGranted(permissions: MutableList<String>?, all: Boolean) {
+                override fun onGranted() {
                     Log.e("1111111", "onGranted")
                 }
 
-                override fun onDenied(permissions: MutableList<String>?, never: Boolean) {
-                    Log.e("1111111", "onDenied")
+                override fun onDenied(never: Boolean) {
+                    Log.e("1111111", "onDenied  never=$never")
                 }
 
             })

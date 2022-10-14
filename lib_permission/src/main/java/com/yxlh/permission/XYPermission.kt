@@ -1,6 +1,7 @@
 package com.yxlh.permission
 
 import android.content.Context
+import android.util.Log
 import com.yxlh.permission.api.IPermissionCallBack
 import com.yxlh.permission.impl.PermissionFactory
 import com.yxlh.permission.impl.PermissionImplMode
@@ -12,11 +13,11 @@ import com.yxlh.permission.intercept.Interceptor
  *@author zwl
  *@date on 2022/10/8
  */
-object XYPermission {
+class XYPermission private constructor(context: Context) {
+
+    private val TAG = "XYPermission"
 
     private var context: Context? = null
-
-    private var permissionMode = PermissionImplMode.MODE_XX_PERMISSION;
 
     private lateinit var permissions: Array<String>
 
@@ -24,9 +25,22 @@ object XYPermission {
 
     private val intercepts by lazy { InterceptHelper.builder() }
 
-    fun with(context: Context): XYPermission {
+    private var permissionMode = PermissionImplMode.MODE_XX_PERMISSION
+
+
+    init {
         this.context = context
-        this.intercepts?.getInterceptManager?.clear()
+        this.intercepts.getInterceptManager?.clear()
+    }
+
+    companion object {
+        fun with(context: Context): XYPermission {
+            return XYPermission(context)
+        }
+    }
+
+    fun mode(mode: PermissionImplMode): XYPermission {
+        permissionMode = mode
         return this
     }
 
@@ -47,34 +61,45 @@ object XYPermission {
 
     fun request() {
         if (context == null) {
-            throw  RuntimeException("context can not be null")
+            Log.e(TAG, "context can not be null")
+            return
         }
-        intercepts.setInterceptListener(object : InterceptListener {
-            override fun proceed() {
-                PermissionFactory.create(permissionMode)
-                    .requestPermission(context!!, permissions, 11, true, object : IPermissionCallBack {
-                        override fun onGranted(permissions: MutableList<String>?, all: Boolean) {
-                            callBack?.onGranted(permissions, all)
-                        }
+        if (!isGrant(permissions)) {
+            intercepts.setInterceptListener(object : InterceptListener {
+                override fun proceed() {
+                    requestPermission()
+                }
 
-                        override fun onDenied(permissions: MutableList<String>?, never: Boolean) {
-                            callBack?.onDenied(permissions, never)
-                        }
-                    })
-            }
+                override fun interrupt() {
+                    callBack?.onDenied(false)
+                }
 
-            override fun interrupt() {
-                callBack?.onDenied(permissions.toMutableList(), false)
-            }
-
-        }).execute()
-
+            }).execute()
+        } else {
+            requestPermission()
+        }
     }
 
+    private fun requestPermission() {
+        PermissionFactory.create(permissionMode)
+            .requestPermission(context!!, permissions, true, object : IPermissionCallBack {
+                override fun onGranted() {
+                    callBack?.onGranted()
+                }
 
-    fun isGrant(context: Context, permission: Array<String>): Boolean {
+                override fun onDenied(never: Boolean) {
+                    callBack?.onDenied(never)
+                }
+            })
+    }
+
+    fun isGrant(permission: Array<String>): Boolean {
+        if (context == null) {
+            Log.e(TAG, "context can not be null")
+            return false
+        }
         return PermissionFactory.create(permissionMode)
-            .isGrant(context, permission)
+            .isGrant(context!!, permission)
     }
 
 }
