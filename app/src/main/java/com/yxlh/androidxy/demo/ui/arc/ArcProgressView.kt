@@ -1,5 +1,6 @@
 package com.yxlh.androidxy.demo.ui.arc
 
+import android.animation.ValueAnimator
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Color
@@ -7,10 +8,12 @@ import android.graphics.Paint
 import android.graphics.RectF
 import android.util.AttributeSet
 import android.view.View
+import android.view.animation.LinearInterpolator
 import com.yxlh.androidxy.R
 import kotlin.math.PI
 import kotlin.math.cos
 import kotlin.math.sin
+
 
 /**
  *@describe 圆弧
@@ -25,8 +28,13 @@ class ArcProgressView(context: Context?, attrs: AttributeSet?, defStyleAttr: Int
     private var arcBgColor = Color.BLUE
     private var arcProgressColor = Color.RED
     private var arcSize = 12F
+    private var arcAnimDuration = 500L
     private var maxProgress = 100
     private var progress = 60
+
+    //绘制圆弧
+    private val startAngle = 135f
+    private val sweepAngle = 270f
 
     //圆弧背景Paint
     private val bgPaint by lazy {
@@ -88,6 +96,7 @@ class ArcProgressView(context: Context?, attrs: AttributeSet?, defStyleAttr: Int
             arcBgColor = getColor(R.styleable.ArcProgressView_arcBgColor, arcBgColor)
             arcProgressColor = getColor(R.styleable.ArcProgressView_arcProgressColor, arcProgressColor)
             arcSize = getDimension(R.styleable.ArcProgressView_arcSize, arcSize)
+            arcAnimDuration = getInt(R.styleable.ArcProgressView_arcAnimDuration, 500).toLong()
             recycle()
         }
     }
@@ -107,10 +116,6 @@ class ArcProgressView(context: Context?, attrs: AttributeSet?, defStyleAttr: Int
         //正方形RectF
         val rectF = RectF(arcSize / 2, arcSize / 2, measuredWidth - arcSize / 2, measuredHeight - arcSize / 2)
 
-        //绘制圆弧
-        var startAngle = 135f
-        var sweepAngle = 270f
-
         //绘制背景圆弧
         canvas?.drawArc(rectF, startAngle, sweepAngle, false, bgPaint)
 
@@ -122,7 +127,7 @@ class ArcProgressView(context: Context?, attrs: AttributeSet?, defStyleAttr: Int
         canvas?.drawCircle(1.0f * measuredWidth / 2, 1.0f * measuredHeight / 2, 5.0f, pointerPaint)
 
         //绘制指针
-        var l = measuredWidth / 2 * 0.75
+        val l = measuredWidth / 2 * 0.75
         canvas?.drawLine(
             1.0f * measuredWidth / 2, 1.0f * measuredHeight / 2,
             (measuredWidth / 2 + l * cos(degToRad(startAngle + percentage * sweepAngle))).toFloat(),
@@ -136,12 +141,19 @@ class ArcProgressView(context: Context?, attrs: AttributeSet?, defStyleAttr: Int
 
 
     /**
-     * 设置当前进度
+     * 设置进度
      */
     fun setProgress(progress: Int) {
-        this.progress = progress
-        invalidate()
+        val anim = ValueAnimator.ofInt(0, progress)
+        anim.duration = arcAnimDuration
+        anim.interpolator = LinearInterpolator()
+        anim.addUpdateListener { animation ->
+            this.progress = animation.animatedValue as Int
+            invalidate()
+        }
+        anim.start()
     }
+
 
     /**
      * 设置最大进度

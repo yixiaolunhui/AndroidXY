@@ -4,6 +4,7 @@
         <attr name="arcBgColor" format="color" />
         <attr name="arcProgressColor" format="color" />
         <attr name="arcSize" format="dimension" />
+        <attr name="arcAnimDuration" format="integer" />
     </declare-styleable>
 
 

@@ -10,14 +10,16 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/clear"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
+        android:layout_margin="20dp"
         android:onClick="clear"
         android:text="清空数据" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/jump"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
+        android:layout_margin="20dp"
         android:onClick="jumpDetail"
         android:text="跳转到详情" />
 
@@ -34,8 +36,5 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <com.yxlh.androidxy.demo.MyView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
 
 </androidx.appcompat.widget.LinearLayoutCompat>

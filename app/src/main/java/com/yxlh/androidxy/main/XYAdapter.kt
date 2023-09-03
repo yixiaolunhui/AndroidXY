@@ -69,8 +69,13 @@ class XYAdapter(var context: Context) : BaseExpandableListAdapter() {
             holder = convertView?.tag as ChildViewHolder?
         }
         view?.setOnClickListener {
-            var intent=Intent(context, getChild(groupPosition, childPosition).cls)
-            context.startActivity(intent)
+            if (getChild(groupPosition, childPosition).cls != null) {
+                var intent = Intent(context, getChild(groupPosition, childPosition).cls)
+                context.startActivity(intent)
+            } else {
+                getChild(groupPosition, childPosition).click?.onClick(context)
+            }
+
         }
         holder?.childName?.text = getChild(groupPosition, childPosition).name
         return view!!
@@ -80,7 +85,7 @@ class XYAdapter(var context: Context) : BaseExpandableListAdapter() {
         var groupName: AppCompatTextView? = null
 
         init {
-            groupName = view?.findViewById<AppCompatTextView>(R.id.group_name)
+            groupName = view?.findViewById(R.id.group_name)
         }
     }
 
@@ -88,7 +93,7 @@ class XYAdapter(var context: Context) : BaseExpandableListAdapter() {
         var childName: AppCompatTextView? = null
 
         init {
-            childName = view?.findViewById<AppCompatTextView>(R.id.child_name)
+            childName = view?.findViewById(R.id.child_name)
         }
     }
 

@@ -37,7 +37,7 @@ class PermissionUtilImpl : IPermissionApi {
                 }
 
                 override fun onDenied(deniedForever: MutableList<String>, denied: MutableList<String>) {
-                    callback?.onDenied(deniedForever.size>0)
+                    callback?.onDenied(deniedForever.size > 0)
                 }
             })
             .request()

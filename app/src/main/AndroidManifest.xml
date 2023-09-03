@@ -1,15 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="com.yxlh.androidxy">
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission
         android:name="android.permission.WRITE_SECURE_SETTINGS"
         tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
-    <uses-permission android:name="android.permission.CAMERA"/>
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -22,39 +27,44 @@
         android:theme="@style/Theme.AndroidXY"
         tools:targetApi="31">
         <activity
-            android:name=".demo.ui.codeet.CodeActivity"
-            android:label="验证码"
-            android:exported="false" />
+            android:name=".demo.ui.carousel.CarouselActivity"
+            android:exported="false"
+            android:label="旋转木马"
+            android:launchMode="singleInstancePerTask"/>
         <activity
-            android:name="com.yxlh.androidxy.demo.function.jump.DetailActivity"
+            android:name=".demo.ui.codeet.CodeActivity"
+            android:exported="false"
+            android:label="验证码" />
+        <activity
+            android:name=".demo.function.jump.DetailActivity"
             android:exported="false"
             android:label="详情页面" />
         <activity
-            android:name="com.yxlh.androidxy.demo.function.jump.AuthActivity"
+            android:name=".demo.function.jump.AuthActivity"
             android:exported="false"
             android:label="认证页面" />
         <activity
-            android:name="com.yxlh.androidxy.demo.function.jump.LoginActivity"
+            android:name=".demo.function.jump.LoginActivity"
             android:exported="false"
             android:label="登录页面" />
         <activity
-            android:name="com.yxlh.androidxy.demo.function.jump.ActivityStartActivity"
+            android:name=".demo.function.jump.ActivityStartActivity"
             android:exported="false" />
         <activity
-            android:name="com.yxlh.androidxy.demo.ui.avatar.AvatarOverlayActivity"
+            android:name=".demo.ui.avatar.AvatarOverlayActivity"
             android:exported="false" />
         <activity
-            android:name="com.yxlh.androidxy.demo.ui.tag.TagListActivity"
+            android:name=".demo.ui.tag.TagListActivity"
             android:exported="false" />
         <activity
-            android:name="com.yxlh.androidxy.demo.ui.tag.TagActivity"
+            android:name=".demo.ui.tag.TagActivity"
             android:exported="false"
             android:label="标签" />
         <activity
-            android:name="com.yxlh.androidxy.demo.ui.keyboard.KeyboardActivity"
+            android:name=".demo.ui.keyboard.KeyboardActivity"
             android:exported="false" />
         <activity
-            android:name="com.yxlh.androidxy.demo.ui.arc.ArcProgressActivity"
+            android:name=".demo.ui.arc.ArcProgressActivity"
             android:exported="false"
             android:process=":test" />
         <activity
