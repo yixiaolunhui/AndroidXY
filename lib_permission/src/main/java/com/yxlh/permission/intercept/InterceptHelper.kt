@@ -29,7 +29,7 @@ object InterceptHelper {
 
 
         fun execute() {
-            if (manager != null && manager.getChainCount() >= 0) {
+            if (manager.getChainCount() >= 0) {
                 manager.proceed()
             }
         }

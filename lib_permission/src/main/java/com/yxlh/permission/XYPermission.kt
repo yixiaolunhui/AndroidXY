@@ -30,7 +30,7 @@ class XYPermission private constructor(context: Context) {
 
     init {
         this.context = context
-        this.intercepts.getInterceptManager?.clear()
+        this.intercepts.getInterceptManager.clear()
     }
 
     companion object {

@@ -77,4 +77,9 @@ dependencies {
     implementation "com.google.android.material:compose-theme-adapter:1.1.16"
     // When using a AppCompat theme
     implementation "com.google.accompanist:accompanist-appcompat-theme:0.25.1"
+
+
+
+    //flutter
+//    implementation project(':flutter')
 }

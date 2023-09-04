@@ -33,11 +33,11 @@ class PermissionUtilImpl : IPermissionApi {
         PermissionUtils.permission(*permission.toTypedArray())
             .callback(object : PermissionUtils.FullCallback {
                 override fun onGranted(granted: MutableList<String>) {
-                    callback?.onGranted()
+                    callback.onGranted()
                 }
 
                 override fun onDenied(deniedForever: MutableList<String>, denied: MutableList<String>) {
-                    callback?.onDenied(deniedForever.size > 0)
+                    callback.onDenied(deniedForever.size > 0)
                 }
             })
             .request()

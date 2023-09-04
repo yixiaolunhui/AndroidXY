@@ -1,16 +1,32 @@
 package com.yxlh.androidxy
 
-import android.util.Log
+import com.yxlh.androidxy.XMTest.ListNode
 import org.junit.Test
 
-/**
- * Example local unit test, which will execute on the development machine (host).
- *
- * See [testing documentation](http://d.android.com/tools/testing).
- */
 class ExampleUnitTest {
 
     @Test
     fun addition_isCorrect() {
+    }
+
+    class ListNode(var value: Int) {
+        var next: ListNode? = null
+    }
+
+    fun hasCycle(head: ListNode?): Boolean {
+        if (head == null) {
+            return false
+        }
+        var fast = head
+        var slow = head
+        while (fast?.next != null) {
+            fast = fast.next?.next
+            slow = slow?.next
+            if (fast == slow) {
+                return true
+            }
+        }
+        return false
+
     }
 }
