@@ -1,6 +1,5 @@
 package com.yxlh.androidxy
 
-import com.yxlh.androidxy.XMTest.ListNode
 import org.junit.Test
 
 class ExampleUnitTest {

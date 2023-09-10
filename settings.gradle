@@ -29,9 +29,5 @@ rootProject.name = "AndroidXY"
 include ':app'
 include ':lib_permission'
 
-//flutter
-//setBinding(new Binding([gradle: this]))
-//evaluate(new File(
-//        settingsDir.parentFile,
-//        'flutter_module/.android/include_flutter.groovy'
-//))
+//apply { from("flutter_settings.gradle") }
+

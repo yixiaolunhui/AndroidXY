@@ -78,7 +78,7 @@ dependencies {
     // When using a AppCompat theme
     implementation "com.google.accompanist:accompanist-appcompat-theme:0.25.1"
 
-
+    implementation 'com.github.devlight.navigationtabstrip:navigationtabstrip:1.0.4'
 
     //flutter
 //    implementation project(':flutter')

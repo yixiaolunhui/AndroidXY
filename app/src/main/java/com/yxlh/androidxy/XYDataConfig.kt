@@ -10,6 +10,7 @@ import com.yxlh.androidxy.demo.ui.arc.ArcProgressActivity
 import com.yxlh.androidxy.demo.ui.avatar.AvatarOverlayActivity
 import com.yxlh.androidxy.demo.ui.carousel.CarouselActivity
 import com.yxlh.androidxy.demo.ui.codeet.CodeActivity
+import com.yxlh.androidxy.demo.ui.cycle.screens.CycleActivity
 import com.yxlh.androidxy.demo.ui.tag.TagActivity
 import com.yxlh.permission.XYPermission
 import com.yxlh.permission.api.IPermissionCallBack
@@ -46,6 +47,7 @@ object XYDataConfig {
         items.add(XYItem("头像叠加", AvatarOverlayActivity::class.java))
         items.add(XYItem("圆弧进度", ArcProgressActivity::class.java))
         items.add(XYItem("旋转木马", CarouselActivity::class.java))
+        items.add(XYItem("旋转木马2", CycleActivity::class.java))
         //TODO
 
         return XYGroup("自定义", items)

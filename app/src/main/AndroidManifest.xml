@@ -27,10 +27,13 @@
         android:theme="@style/Theme.AndroidXY"
         tools:targetApi="31">
         <activity
+            android:name=".demo.ui.cycle.screens.CycleActivity"
+            android:exported="false" />
+        <activity
             android:name=".demo.ui.carousel.CarouselActivity"
             android:exported="false"
             android:label="旋转木马"
-            android:launchMode="singleInstancePerTask"/>
+            android:launchMode="singleInstancePerTask" />
         <activity
             android:name=".demo.ui.codeet.CodeActivity"
             android:exported="false"
