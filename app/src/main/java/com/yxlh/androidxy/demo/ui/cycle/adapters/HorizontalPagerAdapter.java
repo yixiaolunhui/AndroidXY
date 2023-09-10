@@ -23,31 +23,31 @@ public class HorizontalPagerAdapter extends PagerAdapter {
 
     private final Utils.LibraryObject[] LIBRARIES = new Utils.LibraryObject[]{
             new Utils.LibraryObject(
-                    R.drawable.ic_strategy,
+                    R.drawable.cycle_ic_strategy,
                     "Strategy"
             ),
             new Utils.LibraryObject(
-                    R.drawable.ic_design,
+                    R.drawable.cycle_ic_design,
                     "Design"
             ),
             new Utils.LibraryObject(
-                    R.drawable.ic_development,
+                    R.drawable.cycle_ic_development,
                     "Development"
             ),
             new Utils.LibraryObject(
-                    R.drawable.ic_qa,
+                    R.drawable.cycle_ic_qa,
                     "Quality Assurance"
             ),
             new Utils.LibraryObject(
-                    R.drawable.ic_qa,
+                    R.drawable.cycle_ic_qa,
                     "Quality Assurance2"
             ),
             new Utils.LibraryObject(
-                    R.drawable.ic_qa,
+                    R.drawable.cycle_ic_qa,
                     "Quality Assurance3"
             ),
             new Utils.LibraryObject(
-                    R.drawable.ic_qa,
+                    R.drawable.cycle_ic_qa,
                     "Quality Assurance4"
             )
     };

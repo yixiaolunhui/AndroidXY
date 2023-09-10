@@ -18,7 +18,7 @@
         android:layout_marginTop="10dp"
         android:adjustViewBounds="true"
         android:padding="8dp"
-        android:src="@drawable/ic_logo"/>
+        android:src="@drawable/cycle_ic_logo"/>
 
     <com.gigamole.navigationtabstrip.NavigationTabStrip
         android:id="@+id/nts"
@@ -50,7 +50,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="20dp"
-            android:background="@drawable/overlay_top"
+            android:background="@drawable/cycle_overlay_top"
             android:cacheColorHint="#00000000"/>
 
     </FrameLayout>

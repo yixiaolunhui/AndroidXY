@@ -20,7 +20,7 @@ public class VerticalPagerAdapter extends PagerAdapter {
 
     private final Utils.LibraryObject[] TWO_WAY_LIBRARIES = new Utils.LibraryObject[]{
             new Utils.LibraryObject(
-                    R.drawable.ic_fintech,
+                    R.drawable.cycle_ic_fintech,
                     "Fintech"
             ),
             new Utils.LibraryObject(
@@ -28,19 +28,19 @@ public class VerticalPagerAdapter extends PagerAdapter {
                     "Delivery"
             ),
             new Utils.LibraryObject(
-                    R.drawable.ic_social,
+                    R.drawable.cycle_ic_social,
                     "Social network"
             ),
             new Utils.LibraryObject(
-                    R.drawable.ic_ecommerce,
+                    R.drawable.cycle_ic_ecommerce,
                     "E-commerce"
             ),
             new Utils.LibraryObject(
-                    R.drawable.ic_wearable,
+                    R.drawable.cycle_ic_wearable,
                     "Wearable"
             ),
             new Utils.LibraryObject(
-                    R.drawable.ic_internet,
+                    R.drawable.cycle_ic_internet,
                     "Internet of things"
             )
     };
