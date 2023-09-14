@@ -28,13 +28,13 @@ class XXPermissionImpl : IPermissionApi {
         XXPermissions.with(context)
             .permission(permission)
             .request(object : OnPermissionCallback {
-                override fun onGranted(permissions: MutableList<String>?, all: Boolean) {
+                override fun onGranted(permissions: MutableList<String>, all: Boolean) {
                     if (all) {
                         callback.onGranted()
                     }
                 }
 
-                override fun onDenied(permissions: MutableList<String>?, never: Boolean) {
+                override fun onDenied(permissions: MutableList<String>, never: Boolean) {
                     super.onDenied(permissions, never)
                     callback.onDenied(never)
                 }

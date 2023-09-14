@@ -2,13 +2,8 @@ pluginManagement {
     repositories {
         gradlePluginPortal()
         google()
-        jcenter()
         mavenCentral()
         maven { url "https://jitpack.io" }
-        maven { url 'https://maven.aliyun.com/nexus/content/groups/public/' }
-        maven { url 'https://maven.aliyun.com/nexus/content/repositories/jcenter' }
-        maven { url 'https://maven.aliyun.com/nexus/content/repositories/google' }
-        maven { url 'https://maven.aliyun.com/nexus/content/repositories/gradle-plugin' }
     }
 }
 dependencyResolutionManagement {
@@ -16,18 +11,12 @@ dependencyResolutionManagement {
     repositories {
         gradlePluginPortal()
         google()
-        jcenter()
         mavenCentral()
         maven { url "https://jitpack.io" }
-        maven { url 'https://maven.aliyun.com/nexus/content/groups/public/' }
-        maven { url 'https://maven.aliyun.com/nexus/content/repositories/jcenter' }
-        maven { url 'https://maven.aliyun.com/nexus/content/repositories/google' }
-        maven { url 'https://maven.aliyun.com/nexus/content/repositories/gradle-plugin' }
     }
 }
 rootProject.name = "AndroidXY"
 include ':app'
 include ':lib_permission'
 
-//apply { from("flutter_settings.gradle") }
-
+apply { from("flutter_settings.gradle") }

@@ -81,5 +81,5 @@ dependencies {
     implementation 'com.github.devlight.navigationtabstrip:navigationtabstrip:1.0.4'
 
     //flutter
-//    implementation project(':flutter')
+    implementation project(':flutter')
 }
