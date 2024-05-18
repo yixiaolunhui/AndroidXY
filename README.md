@@ -7,6 +7,7 @@
 | :--------- | :--: |
 | 标签  | <img src="https://files.mdnice.com/user/34651/638d768c-d3f8-4085-8ce0-22677b31cb0e.gif" width="300"  alt="标签"/>|   
 | 验证码  | <img src="https://files.mdnice.com/user/34651/9501146f-1983-4dea-8d82-e7b3299ee75e.jpg" width="300"  alt="验证码"/>|  
+| 三角形指标评分         |    <img src="https://files.mdnice.com/user/34651/e3ce8686-5a49-409c-bc27-ac5aa213ef0a.gif" width="300" alt="三角形指标评分"/>     |
 
 
 ### "Android小样"公众号

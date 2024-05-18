@@ -57,35 +57,47 @@
     </declare-styleable>
 
 
-
-    <attr name="icvp_min_page_scale_offset" format="dimension"/>
-    <attr name="icvp_center_page_scale_offset" format="dimension"/>
-    <attr name="icvp_min_page_scale" format="float"/>
-    <attr name="icvp_max_page_scale" format="float"/>
-    <attr name="icvp_medium_scaled" format="boolean"/>
-    <attr name="icvp_scroll_duration" format="integer"/>
-    <attr name="icvp_page_duration" format="integer"/>
-    <attr name="icvp_interpolator" format="reference"/>
+    <attr name="icvp_min_page_scale_offset" format="dimension" />
+    <attr name="icvp_center_page_scale_offset" format="dimension" />
+    <attr name="icvp_min_page_scale" format="float" />
+    <attr name="icvp_max_page_scale" format="float" />
+    <attr name="icvp_medium_scaled" format="boolean" />
+    <attr name="icvp_scroll_duration" format="integer" />
+    <attr name="icvp_page_duration" format="integer" />
+    <attr name="icvp_interpolator" format="reference" />
     <declare-styleable name="HorizontalInfiniteCycleViewPager">
-        <attr name="icvp_min_page_scale_offset"/>
-        <attr name="icvp_center_page_scale_offset"/>
-        <attr name="icvp_min_page_scale"/>
-        <attr name="icvp_max_page_scale"/>
-        <attr name="icvp_medium_scaled"/>
-        <attr name="icvp_scroll_duration"/>
-        <attr name="icvp_page_duration"/>
-        <attr name="icvp_interpolator"/>
+        <attr name="icvp_min_page_scale_offset" />
+        <attr name="icvp_center_page_scale_offset" />
+        <attr name="icvp_min_page_scale" />
+        <attr name="icvp_max_page_scale" />
+        <attr name="icvp_medium_scaled" />
+        <attr name="icvp_scroll_duration" />
+        <attr name="icvp_page_duration" />
+        <attr name="icvp_interpolator" />
     </declare-styleable>
 
     <declare-styleable name="VerticalInfiniteCycleViewPager">
-        <attr name="icvp_min_page_scale_offset"/>
-        <attr name="icvp_center_page_scale_offset"/>
-        <attr name="icvp_min_page_scale"/>
-        <attr name="icvp_max_page_scale"/>
-        <attr name="icvp_medium_scaled"/>
-        <attr name="icvp_scroll_duration"/>
-        <attr name="icvp_page_duration"/>
-        <attr name="icvp_interpolator"/>
+        <attr name="icvp_min_page_scale_offset" />
+        <attr name="icvp_center_page_scale_offset" />
+        <attr name="icvp_min_page_scale" />
+        <attr name="icvp_max_page_scale" />
+        <attr name="icvp_medium_scaled" />
+        <attr name="icvp_scroll_duration" />
+        <attr name="icvp_page_duration" />
+        <attr name="icvp_interpolator" />
     </declare-styleable>
+
+
+    <declare-styleable name="TriangleRatingAnimView">
+        <attr name="maxRating" format="integer" />
+        <attr name="upRating" format="integer" />
+        <attr name="leftRating" format="integer" />
+        <attr name="rightRating" format="integer" />
+        <attr name="strokeColor" format="color" />
+        <attr name="strokeWidth" format="dimension" />
+        <attr name="ratingStrokeColor" format="color" />
+        <attr name="ratingStrokeWidth" format="dimension" />
+    </declare-styleable>
+
 
 </resources>

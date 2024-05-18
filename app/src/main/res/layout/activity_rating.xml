@@ -1,0 +1,76 @@
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_horizontal"
+    android:gravity="center"
+    android:orientation="vertical">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+
+        <TextView
+            android:id="@+id/upText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="时间管理"
+            android:textColor="@color/black"
+            android:textSize="13sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.yxlh.androidxy.demo.ui.rating.TriangleRatingAnimView
+            android:id="@+id/triangleRatingAnimView"
+            android:layout_width="300dp"
+            android:layout_height="200dp"
+            android:layout_centerInParent="true"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/upText"
+            app:leftRating="3"
+            app:maxRating="10"
+            app:ratingStrokeColor="@android:color/holo_red_dark"
+            app:ratingStrokeWidth="4dp"
+            app:rightRating="8"
+            app:strokeColor="@android:color/darker_gray"
+            app:strokeWidth="3dp"
+            app:upRating="5" />
+
+        <TextView
+            android:id="@+id/leftText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="成本控制"
+            android:textColor="@color/black"
+            android:textSize="13sp"
+            app:layout_constraintTop_toBottomOf="@+id/triangleRatingAnimView"
+            app:layout_constraintLeft_toLeftOf="@+id/triangleRatingAnimView"
+            />
+
+        <TextView
+            android:id="@+id/rightText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="质量保证"
+            android:textColor="@color/black"
+            android:textSize="13sp"
+            app:layout_constraintTop_toBottomOf="@+id/triangleRatingAnimView"
+            app:layout_constraintRight_toRightOf="@+id/triangleRatingAnimView"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/randomizeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/triangleRatingAnimView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="更改数据" />
+
+</androidx.appcompat.widget.LinearLayoutCompat>

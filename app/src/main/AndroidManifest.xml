@@ -67,6 +67,9 @@
             android:name=".demo.ui.keyboard.KeyboardActivity"
             android:exported="false" />
         <activity
+            android:name=".demo.ui.rating.RatingActivity"
+            android:exported="false" />
+        <activity
             android:name=".demo.ui.arc.ArcProgressActivity"
             android:exported="false"
             android:process=":test" />
