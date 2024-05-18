@@ -112,8 +112,8 @@ class TriangleRatingAnimView @JvmOverloads constructor(
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-        val width = width.toFloat()
-        val height = height.toFloat()
+        val width = measuredWidth.toFloat()
+        val height = measuredHeight.toFloat()
         val circleRadius = context.dpToPx(5f)
         val padding = circleRadius + context.dpToPx(2f)
 
