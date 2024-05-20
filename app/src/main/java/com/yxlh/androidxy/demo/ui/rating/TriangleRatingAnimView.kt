@@ -36,17 +36,32 @@ class TriangleRatingAnimView @JvmOverloads constructor(
     var upRating: Int = 0
         set(value) {
             field = value
-            animateRating()
+            if (enableAnimation) {
+                animateRating()
+            } else {
+                animatedUpRating = upRating
+                invalidate()
+            }
         }
     var leftRating: Int = 0
         set(value) {
             field = value
-            animateRating()
+            if (enableAnimation) {
+                animateRating()
+            } else {
+                animatedLeftRating = leftRating
+                invalidate()
+            }
         }
     var rightRating: Int = 0
         set(value) {
             field = value
-            animateRating()
+            if (enableAnimation) {
+                animateRating()
+            } else {
+                animatedRightRating = rightRating
+                invalidate()
+            }
         }
     private var strokeColor: Int = Color.GRAY
     private var strokeWidth: Float = context.dpToPx(1.5f)
@@ -55,6 +70,7 @@ class TriangleRatingAnimView @JvmOverloads constructor(
     private var animatedUpRating = 0
     private var animatedLeftRating = 0
     private var animatedRightRating = 0
+    private var enableAnimation: Boolean = true
 
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         style = Paint.Style.STROKE
@@ -92,6 +108,7 @@ class TriangleRatingAnimView @JvmOverloads constructor(
             strokeWidth = context.dpToPx(getDimension(R.styleable.TriangleRatingAnimView_strokeWidth, 2f))
             ratingStrokeColor = getColor(R.styleable.TriangleRatingAnimView_ratingStrokeColor, Color.RED)
             ratingStrokeWidth = context.dpToPx(getDimension(R.styleable.TriangleRatingAnimView_ratingStrokeWidth, 4f))
+            enableAnimation = getBoolean(R.styleable.TriangleRatingAnimView_enableAnimation, true)
         }
     }
 

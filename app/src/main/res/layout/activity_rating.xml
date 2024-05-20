@@ -33,6 +33,7 @@
             app:layout_constraintTop_toBottomOf="@+id/upText"
             app:leftRating="3"
             app:maxRating="10"
+            app:enableAnimation="false"
             app:ratingStrokeColor="@android:color/holo_red_dark"
             app:ratingStrokeWidth="4dp"
             app:rightRating="8"

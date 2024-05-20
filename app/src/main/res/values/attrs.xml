@@ -97,6 +97,7 @@
         <attr name="strokeWidth" format="dimension" />
         <attr name="ratingStrokeColor" format="color" />
         <attr name="ratingStrokeWidth" format="dimension" />
+        <attr name="enableAnimation" format="boolean" />
     </declare-styleable>
 
 
