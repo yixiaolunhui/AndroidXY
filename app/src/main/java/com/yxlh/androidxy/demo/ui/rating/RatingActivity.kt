@@ -29,7 +29,6 @@ class RatingActivity : AppCompatActivity() {
             this.upRating = upRating
             this.leftRating = leftRating
             this.rightRating = rightRating
-            invalidate()
         }
     }
 }
