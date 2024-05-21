@@ -98,6 +98,7 @@
         <attr name="ratingStrokeColor" format="color" />
         <attr name="ratingStrokeWidth" format="dimension" />
         <attr name="enableAnimation" format="boolean" />
+        <attr name="circleRadius" format="dimension" />
     </declare-styleable>
 
 

@@ -31,15 +31,17 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/upText"
-            app:leftRating="3"
-            app:maxRating="10"
-            app:enableAnimation="false"
-            app:ratingStrokeColor="@android:color/holo_red_dark"
-            app:ratingStrokeWidth="4dp"
-            app:rightRating="8"
+            app:upRating="4"
+            app:leftRating="2"
+            app:rightRating="1"
+            app:maxRating="8"
+            app:enableAnimation="true"
+            app:ratingStrokeColor="@android:color/holo_blue_bright"
+            app:ratingStrokeWidth="3dp"
             app:strokeColor="@android:color/darker_gray"
-            app:strokeWidth="3dp"
-            app:upRating="5" />
+            app:strokeWidth="2dp"
+            app:circleRadius="3dp"
+            />
 
         <TextView
             android:id="@+id/leftText"
