@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <com.yxlh.androidxy.demo.ui.textview.ExpandableTextNewView
+        android:id="@+id/expandableTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="This is a very long text that should be expandable and collapsible with icons.expandable and collapsible with iconsexpandable and collapsible with iconsexpandable and collapsible with icons"
+        app:sv_expand_text="展开"
+        app:sv_expand_show_shrink="true"
+        android:maxLines="3"
+        app:sv_expand_color_shrink="@android:color/holo_blue_dark"
+        app:sv_expand_color_expand="@android:color/holo_blue_light"
+        app:sv_expand_lineSpacingMultiplier="1.2"
+        app:sv_expand_lineSpacingExtra="4dp"
+        app:sv_expand_link_clickable="true"
+        app:sv_expand_icon="@drawable/ic_arrow_down"
+        app:sv_shrink_icon="@drawable/ic_arrow_up" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

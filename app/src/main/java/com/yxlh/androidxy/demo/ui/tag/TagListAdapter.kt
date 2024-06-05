@@ -37,9 +37,9 @@ class TagListAdapter : RecyclerView.Adapter<TagListAdapter.TagViewHolder>() {
             foldStateListener = object : MYFlexboxLayoutManager.OnFoldStateListener {
                 override fun stateChange(state: MYFlexboxLayoutManager.State) {
                     if (state == MYFlexboxLayoutManager.State.OPEN) {
-                        holder?.open?.setImageResource(R.drawable.tag_icon_up)
+                        holder?.open?.setImageResource(R.drawable.ic_arrow_up)
                     } else {
-                        holder?.open?.setImageResource(R.drawable.tag_icon_down)
+                        holder?.open?.setImageResource(R.drawable.ic_arrow_down)
                     }
                 }
             }

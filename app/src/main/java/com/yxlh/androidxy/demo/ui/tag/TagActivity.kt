@@ -30,9 +30,9 @@ class TagActivity : AppCompatActivity() {
             foldStateListener = object : MYFlexboxLayoutManager.OnFoldStateListener {
                 override fun stateChange(state: MYFlexboxLayoutManager.State) {
                     if (state == MYFlexboxLayoutManager.State.OPEN) {
-                        binding?.open?.setImageResource(R.drawable.tag_icon_up)
+                        binding?.open?.setImageResource(R.drawable.ic_arrow_up)
                     } else {
-                        binding?.open?.setImageResource(R.drawable.tag_icon_down)
+                        binding?.open?.setImageResource(R.drawable.ic_arrow_down)
                     }
                 }
             }

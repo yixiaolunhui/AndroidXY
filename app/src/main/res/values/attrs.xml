@@ -101,5 +101,28 @@
         <attr name="circleRadius" format="dimension" />
     </declare-styleable>
 
+    <declare-styleable name="ExpandableTextView">
+        <attr name="maxLines" format="integer" />
+        <attr name="expandDrawable" format="reference" />
+        <attr name="collapseDrawable" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="SvExpandableTextView">
+        <attr name="sv_expand_text" format="string" />
+        <attr name="sv_shrink_text" format="string" />
+        <attr name="sv_expand_show_shrink" format="boolean" />
+        <attr name="sv_expand_color_shrink" format="color" />
+        <attr name="sv_expand_color_expand" format="color" />
+        <attr name="sv_expand_lineSpacingMultiplier" format="float" />
+        <attr name="sv_expand_lineSpacingExtra" format="dimension" />
+        <attr name="sv_expand_link_clickable" format="boolean" />
+        <attr name="sv_expand_icon" format="reference" />
+        <attr name="sv_shrink_icon" format="reference" />
+        <attr name="sv_expand_style" format="enum">
+            <enum name="text" value="1" />
+            <enum name="image" value="2" />
+        </attr>
+    </declare-styleable>
+
 
 </resources>
