@@ -308,20 +308,40 @@ public class ExpandableTextNewView extends TextView {
                     start--;
                 }
                 stringBuilder.replace(start, stringBuilder.length(), shrinkExtra);
-                if (expandStyle == STYPE_IMAGE) {
-                    ExpandableTextExt.addImageSpan(stringBuilder, expandIcon);
-                }
             } else {
                 stringBuilder.replace(lineStart, stringBuilder.length(), shrinkExtra);
             }
 //            if (isSpanRight) {
 //                fixShrinkEndSpace(stringBuilder, lineStart);
 //            }
-            if (isLinkClickable) {
-                buildClickableSpan(stringBuilder);
-            } else {
-                buildForegroundSpan(stringBuilder);
+
+            if (expandStyle == STYPE_IMAGE) {
+                if (isLinkClickable) {
+                    ExpandableTextExt.addImageSpan(stringBuilder, expandIcon);
+                }else{
+                    ExpandableTextExt.addImageSpan(spannableStringBuilder, shrinkIcon,new SpannableUtils.OnImageSpanClickListener() {
+                        @Override
+                        public void onImageSpanClick() {
+                            if (needExpanedClick) {
+                                setMaxLines(Integer.MAX_VALUE);
+                                mStatus = EXPAND;
+                                if (mOnExpandStateChangeListener != null) {
+                                    mOnExpandStateChangeListener.onExpand(ExpandableTextNewView.this);
+                                }
+                                internalSetText();
+                            }
+                        }
+                    }
+                }
+
+            }else{
+                if (isLinkClickable) {
+                    buildClickableSpan(stringBuilder);
+                } else {
+                    buildForegroundSpan(stringBuilder);
+                }
             }
+
             return stringBuilder;
         } catch (Exception e) {
             return stringBuilder;
@@ -364,24 +384,38 @@ public class ExpandableTextNewView extends TextView {
     private CharSequence generateExpandText(final int maxLines, Layout layout) {
         SpannableStringBuilder stringBuilder = new SpannableStringBuilder(mOriginText);
         fillExpandSpace(stringBuilder, layout);
-        stringBuilder.append(shrinkTxt);
-        stringBuilder.setSpan(new ClickableSpan() {
-            @Override
-            public void onClick(View widget) {
-                setMaxLines(maxLines);
-                mStatus = SHRINK;
-                if (mOnExpandStateChangeListener != null) {
-                    mOnExpandStateChangeListener.onShrink(ExpandableTextNewView.this);
+        if(expandStyle==STYPE_IMAGE){
+            ExpandableTextExt.addImageSpan(spannableStringBuilder, shrinkIcon,new SpannableUtils.OnImageSpanClickListener() {
+                @Override
+                public void onImageSpanClick() {
+                    setMaxLines(maxLines);
+                    mStatus = SHRINK;
+                    if (mOnExpandStateChangeListener != null) {
+                        mOnExpandStateChangeListener.onShrink(ExpandableTextNewView.this);
+                    }
+                    internalSetText();
                 }
-                internalSetText();
-            }
+            });
+        }else{
+            stringBuilder.append(shrinkTxt);
+            stringBuilder.setSpan(new ClickableSpan() {
+                @Override
+                public void onClick(View widget) {
+                    setMaxLines(maxLines);
+                    mStatus = SHRINK;
+                    if (mOnExpandStateChangeListener != null) {
+                        mOnExpandStateChangeListener.onShrink(ExpandableTextNewView.this);
+                    }
+                    internalSetText();
+                }
 
-            @Override
-            public void updateDrawState(TextPaint ds) {
-                ds.setColor(CLICK_TXT_COLOR[1]);
-                ds.setUnderlineText(false);
-            }
-        }, stringBuilder.length() - shrinkTxt.length(), stringBuilder.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                @Override
+                public void updateDrawState(TextPaint ds) {
+                    ds.setColor(CLICK_TXT_COLOR[1]);
+                    ds.setUnderlineText(false);
+                }
+            }, stringBuilder.length() - shrinkTxt.length(), stringBuilder.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
         return stringBuilder;
     }
 
@@ -392,6 +426,7 @@ public class ExpandableTextNewView extends TextView {
         fillExpandSpace(stringBuilder, layout);
 
         stringBuilder.append(shrinkTxt);
+
         stringBuilder.setSpan(new ClickableSpan() {
             @Override
             public void onClick(View widget) {
@@ -420,7 +455,13 @@ public class ExpandableTextNewView extends TextView {
      */
     private void fillExpandSpace(SpannableStringBuilder stringBuilder, Layout layout) {
         try {
-            int shrinkWidth = (int) (getPaint().measureText(shrinkTxt) + 0.5f);
+            int shrinkWidth =0;
+            if(expandStyle==STYPE_IMAGE){
+                shrinkWidth= ExpandableTextExt.getImageSpanWidth(context, shrinkIcon);
+            }else{
+                shrinkWidth= (int) (getPaint().measureText(shrinkTxt) + 0.5f);
+            }
+
             int lineCount = layout.getLineCount();
             int lastLineStart = layout.getLineStart(lineCount - 1);
             int lastLineWidth = (int) (getPaint().measureText(stringBuilder.subSequence(lastLineStart, stringBuilder.length()).toString()) + 0.5f);
