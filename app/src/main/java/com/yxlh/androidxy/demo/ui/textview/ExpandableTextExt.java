@@ -4,7 +4,9 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
+import android.text.style.ClickableSpan;
 import android.text.style.ImageSpan;
+import android.view.View;
 
 /**
  * @author zwl
@@ -19,6 +21,7 @@ public class ExpandableTextExt {
      * @param drawable
      */
     public static void addImageSpan(SpannableStringBuilder spannableStringBuilder, Drawable drawable) {
+        if (drawable == null) return;
         drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
         ImageSpan imageSpan = new ImageSpan(drawable);
         int start = spannableStringBuilder.length();
@@ -28,6 +31,7 @@ public class ExpandableTextExt {
 
 
     public static void addImageSpan(SpannableStringBuilder spannableStringBuilder, Drawable drawable, OnImageSpanClickListener listener) {
+        if (drawable == null) return;
         drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
         ImageSpan imageSpan = new ImageSpan(drawable);
         int start = spannableStringBuilder.length();
@@ -57,17 +61,17 @@ public class ExpandableTextExt {
      */
     public static int getImageSpanWidth(Context context, int drawableResId) {
         Drawable drawable = context.getResources().getDrawable(drawableResId);
-        return getImageSpanWidth(context, drawable);
+        return getImageSpanWidth(drawable);
     }
 
     /**
      * 获取ImageSpan宽度
      *
-     * @param context
      * @param drawable
      * @return
      */
-    public static int getImageSpanWidth(Context context, Drawable drawable) {
+    public static int getImageSpanWidth(Drawable drawable) {
+        if (drawable == null) return 0;
         ImageSpan imageSpan = new ImageSpan(drawable);
         SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder(" ");
         spannableStringBuilder.setSpan(imageSpan, 0, 1, SpannableStringBuilder.SPAN_EXCLUSIVE_EXCLUSIVE);

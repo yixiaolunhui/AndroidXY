@@ -121,12 +121,26 @@ public class ExpandableTextNewView extends TextView {
         }
         String shrinkText = ta.getString(R.styleable.SvExpandableTextView_sv_shrink_text);
         if (!TextUtils.isEmpty(shrinkText)) {
-            expandTxt = shrinkText;
+            shrinkTxt = shrinkText;
         }
         boolean isShowShrink = ta.getBoolean(R.styleable.SvExpandableTextView_sv_expand_show_shrink, true);
         if (!isShowShrink) {
             shrinkTxt = "";
         }
+        expandIcon = ta.getDrawable(R.styleable.SvExpandableTextView_sv_expand_icon);
+        if (expandIcon == null) {
+            expandIcon = ContextCompat.getDrawable(context, R.drawable.ic_arrow_down);
+        }
+        shrinkIcon = ta.getDrawable(R.styleable.SvExpandableTextView_sv_shrink_icon);
+        if (isShowShrink) {
+            if (shrinkIcon == null) {
+                shrinkIcon = ContextCompat.getDrawable(context, R.drawable.ic_arrow_up);
+            }
+        } else {
+            shrinkIcon = null;
+        }
+
+        expandStyle = ta.getInt(R.styleable.SvExpandableTextView_sv_expand_style, STYPE_TEXT);
         int shrinkTextColor = ta.getColor(R.styleable.SvExpandableTextView_sv_expand_color_shrink, 0);
         if (shrinkTextColor != 0) {
             CLICK_TXT_COLOR[0] = shrinkTextColor;
@@ -138,16 +152,6 @@ public class ExpandableTextNewView extends TextView {
         mLineSpacingMultiplier = ta.getFloat(R.styleable.SvExpandableTextView_sv_expand_lineSpacingMultiplier, 1);
         mLineSpacingExtra = ta.getDimensionPixelSize(R.styleable.SvExpandableTextView_sv_expand_lineSpacingExtra, 0);
         isLinkClickable = ta.getBoolean(R.styleable.SvExpandableTextView_sv_expand_link_clickable, true);
-
-        expandIcon = ta.getDrawable(R.styleable.SvExpandableTextView_sv_expand_icon);
-        if (expandIcon == null) {
-            expandIcon = ContextCompat.getDrawable(context, R.drawable.ic_arrow_up);
-        }
-        shrinkIcon = ta.getDrawable(R.styleable.SvExpandableTextView_sv_shrink_icon);
-        if (shrinkIcon == null) {
-            shrinkIcon = ContextCompat.getDrawable(context, R.drawable.ic_arrow_down);
-        }
-        expandStyle = ta.getInt(R.styleable.SvExpandableTextView_sv_expand_style, STYPE_TEXT);
         ta.recycle();
         if (isLinkClickable) {
             setMovementMethod(MyLinkMovementMethod.getInstance());//支持ClickSpan
@@ -159,7 +163,7 @@ public class ExpandableTextNewView extends TextView {
             shrinkExtra = shrinkExtra + expandTxt;
             shrinkExtraWidth = getPaint().measureText(shrinkExtra);
         } else {
-            shrinkExtraWidth = getPaint().measureText(shrinkExtra) + ExpandableTextExt.getImageSpanWidth(context, expandIcon);
+            shrinkExtraWidth = getPaint().measureText(shrinkExtra) + ExpandableTextExt.getImageSpanWidth(expandIcon);
         }
 
     }
@@ -170,7 +174,7 @@ public class ExpandableTextNewView extends TextView {
         if (mWidth == 0) {
             mWidth = getMeasuredWidth();
             if (enableExpand && mWidth > 0) {
-//                mOriginText = CommonTextViewExtKt.getNotBreakByWordText(this, mWidth);
+                mOriginText = CommonTextViewExtKt.getNotBreakByWordText(this, mWidth);
                 internalSetText();
             }
         }
@@ -318,23 +322,20 @@ public class ExpandableTextNewView extends TextView {
             if (expandStyle == STYPE_IMAGE) {
                 if (isLinkClickable) {
                     ExpandableTextExt.addImageSpan(stringBuilder, expandIcon);
-                }else{
-                    ExpandableTextExt.addImageSpan(spannableStringBuilder, shrinkIcon,new SpannableUtils.OnImageSpanClickListener() {
-                        @Override
-                        public void onImageSpanClick() {
-                            if (needExpanedClick) {
-                                setMaxLines(Integer.MAX_VALUE);
-                                mStatus = EXPAND;
-                                if (mOnExpandStateChangeListener != null) {
-                                    mOnExpandStateChangeListener.onExpand(ExpandableTextNewView.this);
-                                }
-                                internalSetText();
+                } else {
+                    ExpandableTextExt.addImageSpan(stringBuilder, expandIcon, () -> {
+                        if (needExpanedClick) {
+                            setMaxLines(Integer.MAX_VALUE);
+                            mStatus = EXPAND;
+                            if (mOnExpandStateChangeListener != null) {
+                                mOnExpandStateChangeListener.onExpand(ExpandableTextNewView.this);
                             }
+                            internalSetText();
                         }
-                    }
+                    });
                 }
 
-            }else{
+            } else {
                 if (isLinkClickable) {
                     buildClickableSpan(stringBuilder);
                 } else {
@@ -384,19 +385,16 @@ public class ExpandableTextNewView extends TextView {
     private CharSequence generateExpandText(final int maxLines, Layout layout) {
         SpannableStringBuilder stringBuilder = new SpannableStringBuilder(mOriginText);
         fillExpandSpace(stringBuilder, layout);
-        if(expandStyle==STYPE_IMAGE){
-            ExpandableTextExt.addImageSpan(spannableStringBuilder, shrinkIcon,new SpannableUtils.OnImageSpanClickListener() {
-                @Override
-                public void onImageSpanClick() {
-                    setMaxLines(maxLines);
-                    mStatus = SHRINK;
-                    if (mOnExpandStateChangeListener != null) {
-                        mOnExpandStateChangeListener.onShrink(ExpandableTextNewView.this);
-                    }
-                    internalSetText();
+        if (expandStyle == STYPE_IMAGE) {
+            ExpandableTextExt.addImageSpan(stringBuilder, shrinkIcon, () -> {
+                setMaxLines(maxLines);
+                mStatus = SHRINK;
+                if (mOnExpandStateChangeListener != null) {
+                    mOnExpandStateChangeListener.onShrink(ExpandableTextNewView.this);
                 }
+                internalSetText();
             });
-        }else{
+        } else {
             stringBuilder.append(shrinkTxt);
             stringBuilder.setSpan(new ClickableSpan() {
                 @Override
@@ -455,11 +453,11 @@ public class ExpandableTextNewView extends TextView {
      */
     private void fillExpandSpace(SpannableStringBuilder stringBuilder, Layout layout) {
         try {
-            int shrinkWidth =0;
-            if(expandStyle==STYPE_IMAGE){
-                shrinkWidth= ExpandableTextExt.getImageSpanWidth(context, shrinkIcon);
-            }else{
-                shrinkWidth= (int) (getPaint().measureText(shrinkTxt) + 0.5f);
+            int shrinkWidth = 0;
+            if (expandStyle == STYPE_IMAGE) {
+                shrinkWidth = ExpandableTextExt.getImageSpanWidth(shrinkIcon);
+            } else {
+                shrinkWidth = (int) (getPaint().measureText(shrinkTxt) + 0.5f);
             }
 
             int lineCount = layout.getLineCount();
