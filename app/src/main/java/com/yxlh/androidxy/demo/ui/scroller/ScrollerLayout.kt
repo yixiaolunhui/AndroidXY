@@ -9,7 +9,6 @@ import android.view.ViewConfiguration
 import android.widget.LinearLayout
 import android.widget.Scroller
 import androidx.recyclerview.widget.RecyclerView
-import com.yxlh.androidxy.R
 
 class ScrollerLayout @JvmOverloads constructor(
     context: Context,
@@ -64,8 +63,6 @@ class ScrollerLayout @JvmOverloads constructor(
     }
 
     override fun onInterceptTouchEvent(ev: MotionEvent): Boolean {
-        val isTouchChildren = isTouchInsideChild(ev)
-        Log.d("121212", "onInterceptTouchEvent isTouchChildren=$isTouchChildren")
         when (ev.action) {
             MotionEvent.ACTION_DOWN -> {
                 downY = ev.y.toInt()
