@@ -27,6 +27,9 @@
         android:theme="@style/Theme.AndroidXY"
         tools:targetApi="31">
         <activity
+            android:name=".demo.ui.fragments.FragmentListActivity"
+            android:exported="false" />
+        <activity
             android:name=".demo.ui.cycle.screens.CycleActivity"
             android:exported="false" />
         <activity

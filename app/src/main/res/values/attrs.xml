@@ -125,4 +125,7 @@
     </declare-styleable>
 
 
+    <declare-styleable name="LimitHeightRecyclerView">
+        <attr name="limitHeight" format="dimension" />
+    </declare-styleable>
 </resources>

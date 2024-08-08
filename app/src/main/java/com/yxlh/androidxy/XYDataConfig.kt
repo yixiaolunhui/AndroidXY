@@ -11,6 +11,7 @@ import com.yxlh.androidxy.demo.ui.avatar.AvatarOverlayActivity
 import com.yxlh.androidxy.demo.ui.carousel.CarouselActivity
 import com.yxlh.androidxy.demo.ui.codeet.CodeActivity
 import com.yxlh.androidxy.demo.ui.cycle.screens.CycleActivity
+import com.yxlh.androidxy.demo.ui.fragments.FragmentListActivity
 import com.yxlh.androidxy.demo.ui.rating.RatingActivity
 import com.yxlh.androidxy.demo.ui.scroller.ScrollerActivity
 import com.yxlh.androidxy.demo.ui.tag.TagActivity
@@ -52,6 +53,7 @@ object XYDataConfig {
         items.add(XYItem("三角形评分控件", RatingActivity::class.java))
         items.add(XYItem("展开收起TextView", ExpandableTextViewActivity::class.java))
         items.add(XYItem("滑动布局", ScrollerActivity::class.java))
+        items.add(XYItem("Fragments", FragmentListActivity::class.java))
         //TODO
 
         return XYGroup("自定义", items)
