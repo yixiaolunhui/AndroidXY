@@ -16,6 +16,7 @@ import com.yxlh.androidxy.demo.ui.rating.RatingActivity
 import com.yxlh.androidxy.demo.ui.scroller.ScrollerActivity
 import com.yxlh.androidxy.demo.ui.tag.TagActivity
 import com.yxlh.androidxy.demo.ui.textview.ExpandableTextViewActivity
+import com.yxlh.androidxy.demo.ui.viewpager.VpActivity
 import com.yxlh.permission.XYPermission
 import com.yxlh.permission.api.IPermissionCallBack
 import com.yxlh.permission.intercept.Interceptor
@@ -54,6 +55,7 @@ object XYDataConfig {
         items.add(XYItem("展开收起TextView", ExpandableTextViewActivity::class.java))
         items.add(XYItem("滑动布局", ScrollerActivity::class.java))
         items.add(XYItem("Fragments", FragmentListActivity::class.java))
+        items.add(XYItem("自适用高度Vp", VpActivity::class.java))
         //TODO
 
         return XYGroup("自定义", items)
