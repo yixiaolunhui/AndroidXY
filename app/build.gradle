@@ -84,53 +84,69 @@ dependencies {
     //flutter
 //    implementation project(':flutter')
 
-    implementation 'org.aspectj:aspectjrt:1.9.6'
+    implementation 'org.aspectj:aspectjrt:1.9.9.1'
 }
 
 import org.aspectj.bridge.IMessage
 import org.aspectj.bridge.MessageHandler
 import org.aspectj.tools.ajc.Main
 
-final def log = project.logger
-final def variants = project.android.applicationVariants
+android.applicationVariants.all { variant ->
 
-variants.all { variant ->
-    // 注意这里控制debug下生效，可以自行控制是否生效
-    if (!variant.buildType.isDebuggable()) {
-        log.debug("Skipping non-debuggable build type '${variant.buildType.name}'.")
-        return
-    }
+// add the versionName & versionCode to the apk file name
+    variant.outputs.all { output ->
+        def newPath = outputFileName.replace(".apk", "-${variant.versionName}.${variant.versionCode}.apk")
+        outputFileName = new File(outputFileName, newPath)
 
-    JavaCompile javaCompile = variant.javaCompileProvider.get()
-    javaCompile.doLast {
-        String[] args = ["-showWeaveInfo",
-                         "-1.8",
-                         "-inpath", javaCompile.destinationDir.toString(),
-                         "-aspectpath", javaCompile.classpath.asPath,
-                         "-d", javaCompile.destinationDir.toString(),
-                         "-classpath", javaCompile.classpath.asPath,
-                         "-bootclasspath", project.android.bootClasspath.join(File.pathSeparator)]
-        log.debug "ajc args: " + Arrays.toString(args)
+
+        def fullName = ""
+        output.name.tokenize('-').eachWithIndex { token, index ->
+            fullName = fullName + (index == 0 ? token : token.capitalize())
+        }
+
+        JavaCompile javaCompile = variant.javaCompiler
 
         MessageHandler handler = new MessageHandler(true)
-        new Main().run(args, handler)
-        for (IMessage message : handler.getMessages(null, true)) {
-            switch (message.getKind()) {
-                case IMessage.ABORT:
-                case IMessage.ERROR:
-                case IMessage.FAIL:
-                    log.error message.message, message.thrown
-                    break
-                case IMessage.WARNING:
-                    log.warn message.message, message.thrown
-                    break
-                case IMessage.INFO:
-                    log.info message.message, message.thrown
-                    break
-                case IMessage.DEBUG:
-                    log.debug message.message, message.thrown
-                    break
+        javaCompile.doLast {
+            String[] javaArgs = ["-showWeaveInfo",
+                                 "-1.9",
+                                 "-inpath", javaCompile.destinationDir.toString(),
+                                 "-aspectpath", javaCompile.classpath.asPath,
+                                 "-d", javaCompile.destinationDir.toString(),
+                                 "-classpath", javaCompile.classpath.asPath,
+                                 "-bootclasspath", project.android.bootClasspath.join(
+                    File.pathSeparator)]
+
+            String[] kotlinArgs = ["-showWeaveInfo",
+                                   "-1.9",
+                                   "-inpath", project.buildDir.path + "/tmp/kotlin-classes/" + fullName,
+                                   "-aspectpath", javaCompile.classpath.asPath,
+                                   "-d", project.buildDir.path + "/tmp/kotlin-classes/" + fullName,
+                                   "-classpath", javaCompile.classpath.asPath,
+                                   "-bootclasspath", project.android.bootClasspath.join(
+                    File.pathSeparator)]
+
+            new Main().run(javaArgs, handler)
+            new Main().run(kotlinArgs, handler)
+
+            def log = project.logger
+            for (IMessage message : handler.getMessages(null, true)) {
+                switch (message.getKind()) {
+                    case IMessage.ABORT:
+                    case IMessage.ERROR:
+                    case IMessage.FAIL:
+                        log.error message.message, message.thrown
+                        break
+                    case IMessage.WARNING:
+                    case IMessage.INFO:
+                        log.info message.message, message.thrown
+                        break
+                    case IMessage.DEBUG:
+                        log.debug message.message, message.thrown
+                        break
+                }
             }
         }
     }
+
 }
