@@ -42,7 +42,7 @@
                 android:layout_height="100dp"
                 android:background="@color/colorPrimaryDark" />
 
-            <com.yxlh.androidxy.demo.ui.fragments.MallLimitHeightRecyclerView
+            <com.yxlh.androidxy.demo.ui.fragments.MallLimitHeightRecyclerView3
                 android:id="@+id/recycler_view"
                 android:layout_width="match_parent"
                 app:limitHeight="150dp"
