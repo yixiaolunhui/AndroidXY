@@ -93,8 +93,6 @@ import org.aspectj.bridge.MessageHandler
 import org.aspectj.tools.ajc.Main
 
 android.applicationVariants.all { variant ->
-
-// add the versionName & versionCode to the apk file name
     variant.outputs.all { output ->
         def newPath = outputFileName.replace(".apk", "-${variant.versionName}.${variant.versionCode}.apk")
         outputFileName = new File(outputFileName, newPath)
