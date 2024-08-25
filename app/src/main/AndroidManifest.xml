@@ -27,6 +27,9 @@
         android:theme="@style/Theme.AndroidXY"
         tools:targetApi="31">
         <activity
+            android:name=".demo.ui.card.CardActivity"
+            android:exported="false" />
+        <activity
             android:name=".demo.ui.viewpager.VpActivity"
             android:exported="false" />
         <activity

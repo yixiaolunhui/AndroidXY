@@ -8,6 +8,7 @@ import androidx.appcompat.app.AlertDialog
 import com.yxlh.androidxy.demo.function.jump.ActivityStartActivity
 import com.yxlh.androidxy.demo.ui.arc.ArcProgressActivity
 import com.yxlh.androidxy.demo.ui.avatar.AvatarOverlayActivity
+import com.yxlh.androidxy.demo.ui.card.CardActivity
 import com.yxlh.androidxy.demo.ui.carousel.CarouselActivity
 import com.yxlh.androidxy.demo.ui.codeet.CodeActivity
 import com.yxlh.androidxy.demo.ui.cycle.screens.CycleActivity
@@ -56,6 +57,7 @@ object XYDataConfig {
         items.add(XYItem("滑动布局", ScrollerActivity::class.java))
         items.add(XYItem("Fragments", FragmentListActivity::class.java))
         items.add(XYItem("自适用高度Vp", VpActivity::class.java))
+        items.add(XYItem("卡片", CardActivity::class.java))
         //TODO
 
         return XYGroup("自定义", items)
